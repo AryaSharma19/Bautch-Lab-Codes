@@ -29,6 +29,13 @@ function processFile(input, output, file) {
 // Find title of your image //
 title = getTitle();
 
+//turn z stacks into single image max projection, ie combine zstacks
+run("Z Project...", "projection=[Max Intensity]");
+//close original z-stack image
+close(title);
+//rename the combined z-stack image to the orginals name
+rename(title);
+
 // Split image into channels // 
 run("Split Channels");
 

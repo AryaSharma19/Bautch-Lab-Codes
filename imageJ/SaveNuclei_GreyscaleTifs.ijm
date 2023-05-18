@@ -20,6 +20,7 @@ function processFolder(input) {
 		if(endsWith(list[i], suffix))
 			processFile(input, output, list[i]);
 	}
+}
 
 
 function processFile(input, output, file) {
