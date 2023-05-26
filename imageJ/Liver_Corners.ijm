@@ -70,5 +70,6 @@ run("Grays");
 // Save as Tif //
 run("Flatten");
 saveAs("TIFF", output + File.separator + title + "grey");
+wait(250);
 run("Close All");
 }
