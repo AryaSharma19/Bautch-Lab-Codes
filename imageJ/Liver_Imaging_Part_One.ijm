@@ -48,7 +48,7 @@ function main(entrypoint) {
 		embryo = substring(list[i],0,4);
 		
 		//helper functions
-		merge(input, output);
+		merge(input, output, embryo);
 		individuals(input, output, embryo);
 		
 		
@@ -59,7 +59,6 @@ function main(entrypoint) {
 
 //puts greyscale and colored images in the directories
 function individuals(input, output, embryo) {
-	print(input + "Stitch_A01_G001.oir");
 	//opens the stiched file
 	open(input + "Stitch_A01_G001.oir");
 	rename("original");
@@ -111,8 +110,7 @@ function individuals(input, output, embryo) {
 
 
 //puts the merged stich file from the input folder into an output folder
-function merge(input, output) {
-	print(input + "Stitch_A01_G001.oir");
+function merge(input, output, embryo) {
 	//opens the stiched file
 	open(input + "Stitch_A01_G001.oir");
 	rename("Stitch_A01_G001.oir");
@@ -124,14 +122,15 @@ function merge(input, output) {
 	//closes the stiched file window, as all work will now be done on the layered Z stack image window
 	selectWindow("Stitch_A01_G001.oir");
 	close();
-	
+
 	//"Make Composite" layers all channels, to create the merged image
 	selectWindow("MAX_Stitch_A01_G001.oir");
 	run("Make Composite");
 	
 	//saves this combined Z stack 
 	run("Flatten");
-	saveAs("Tiff", output + File.separator + input + " Merged Picture.tif"); //added + input +
+	
+	saveAs("Tiff", output + File.separator + embryo +" Merged Picture.tif"); //added embryo number
 	close(); 
 	selectWindow("MAX_Stitch_A01_G001.oir");
 	close();

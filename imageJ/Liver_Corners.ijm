@@ -1,7 +1,7 @@
 input = getDirectory("Input directory");
 output = getDirectory("Output directory");
 
-channel = 1;
+channel = 3;
 
 
 list = getFileList(input);
@@ -64,9 +64,10 @@ run("Split Channels");
 selectWindow("C" + toString(channel) + "-" + title);
 
 run("Invert");
+wait(250);
 //run("Channels Tool...");
 run("Grays");
-
+wait(250);
 // Save as Tif //
 run("Flatten");
 saveAs("TIFF", output + File.separator + title + "grey");
